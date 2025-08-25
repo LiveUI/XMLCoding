@@ -663,23 +663,5 @@ class XMLParsingTests: XCTestCase {
         XCTAssertEqual(response, response2)
     }
 
-    static var allTests = [
-        ("testValuesElement", testValuesElement),
-        ("testEmptyValuesElement", testEmptyValuesElement),
-        ("testFailOnMissingStringElement", testFailOnMissingStringElement),
-        ("testFailOnMissingDataElement", testFailOnMissingDataElement),
-        ("testOptionalEmptyValuesElement", testOptionalEmptyValuesElement),
-        ("testOptionalMissingValuesElement", testOptionalMissingValuesElement),
-        ("testOptionalEmptyValuesCombinedTagElement", testOptionalEmptyValuesCombinedTagElement),
-        ("testValuesWithISO8601DateElement", testValuesWithISO8601DateElement),
-        ("testEmptyStructureElement", testEmptyStructureElement),
-        ("testEmptyStructureElementNotEffectingPreviousElement", testEmptyStructureElementNotEffectingPreviousElement),
-        ("testListDecodingWithDefaultStrategy", testListDecodingWithDefaultStrategy),
-        ("testMapDecodingWithDefaultStrategy", testMapDecodingWithDefaultStrategy),
-        ("testMapDecodingWithCollapsedMap", testMapDecodingWithCollapsedMap),
-        ("testMapDecodingWithCollapsedListAndMap", testMapDecodingWithCollapsedListAndMap),
-        ("testSingletonListDecodingWithDefaultStrategy", testSingletonListDecodingWithDefaultStrategy),
-        ("testListDecodingWithCollapseItemTagStrategy", testListDecodingWithCollapseItemTagStrategy),
-        ("testSingletonListDecodingWithCollapseItemTagStrategy", testSingletonListDecodingWithCollapseItemTagStrategy)
-    ]
+    // Tests discovered automatically
 }
