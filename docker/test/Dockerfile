@@ -1,4 +1,4 @@
-FROM liveui/boost-base:1.1.1
+FROM swift:6.1
 
 WORKDIR /app
 

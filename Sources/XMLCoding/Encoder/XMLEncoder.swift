@@ -16,7 +16,7 @@ import Foundation
 open class XMLEncoder {
     // MARK: Options
     /// The formatting of the output XML data.
-    public struct OutputFormatting : OptionSet {
+    public struct OutputFormatting: OptionSet, Sendable {
         /// The format's default value.
         public let rawValue: UInt
         
