@@ -64,6 +64,9 @@ open class XMLEncoder {
         
         /// Encoded the `String` as a CData-encoded string.
         case cdata
+        
+        /// Do NOT encode the `String`.
+        case none
     }
     
     /// The strategy to use for encoding `Data` values.
@@ -164,6 +167,7 @@ open class XMLEncoder {
             return result
         }
     }
+
     
     /// The strategy to use for encoding attributes on a node.
     public enum AttributeEncodingStrategy {

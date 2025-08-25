@@ -95,7 +95,7 @@ internal class _XMLElement {
             throw EncodingError.invalidValue(object, EncodingError.Context(codingPath: [], debugDescription: "Top-level encoded as non-root XML fragment."))
         }
         
-        return element.toXMLString(with: header, withCDATA: options.stringEncodingStrategy != .deferredToString).data(using: .utf8, allowLossyConversion: true)!
+        return element.toXMLString(with: header, withCDATA: options.stringEncodingStrategy == .cdata, ignoreEscaping: options.stringEncodingStrategy == .none).data(using: .utf8, allowLossyConversion: true)!
     }
     
     fileprivate static func createElement(parentElement: _XMLElement?, key: String, object: [String: Container]) {
@@ -200,13 +200,13 @@ internal class _XMLElement {
     
     func toXMLString(with header: XMLHeader? = nil, withCDATA cdata: Bool, ignoreEscaping: Bool = false) -> String {
         if let header = header, let headerXML = header.toXML() {
-            return headerXML + _toXMLString(withCDATA: cdata)
+            return headerXML + _toXMLString(withCDATA: cdata, ignoreEscaping: ignoreEscaping)
         } else {
-            return _toXMLString(withCDATA: cdata)
+            return _toXMLString(withCDATA: cdata, ignoreEscaping: ignoreEscaping)
         }
     }
     
-    fileprivate func _toXMLString(indented level: Int = 0, withCDATA cdata: Bool, ignoreEscaping: Bool = false) -> String {
+    fileprivate func _toXMLString(indented level: Int = 0, withCDATA cdata: Bool, ignoreEscaping: Bool) -> String {
         var string = String(repeating: " ", count: level * 4)
         string += "<\(key)"
         
@@ -227,7 +227,7 @@ internal class _XMLElement {
             
             for childElement in children {
                 for child in childElement.value {
-                    string += child._toXMLString(indented: level + 1, withCDATA: cdata)
+                    string += child._toXMLString(indented: level + 1, withCDATA: cdata, ignoreEscaping: ignoreEscaping)
                     string += "\n"
                 }
             }
